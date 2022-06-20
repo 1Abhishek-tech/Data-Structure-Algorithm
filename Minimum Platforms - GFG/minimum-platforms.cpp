@@ -23,14 +23,15 @@ class Solution{
     	    if(arr[i]<=dep[j]){
     	        i++;
     	        platform++;
+    	         if(platform>result)
+    	                result = platform;
     	        
     	    }
     	    else if(arr[i]>dep[j]){
     	        j++;
     	        platform--;
     	    }
-    	    if(platform>result)
-    	                result = platform;
+    	   
     	    
     	}
     	return result;
