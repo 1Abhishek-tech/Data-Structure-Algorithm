@@ -1,0 +1,26 @@
+class Solution {
+public:
+    bool possibleBipartition(int n, vector<vector<int>>& dislikes) {
+        vector<vector<int>> adj(n+1);
+      for(auto& dislike : dislikes){
+        adj[dislike[0]].push_back(dislike[1]);
+        adj[dislike[1]].push_back(dislike[0]);
+      }
+        vector<int> color(n+1, 0);
+        function<bool(int, int)> dfs = [&](int cur, int col) {
+            if(color[cur] != 0) 
+                return color[cur] == col;
+            color[cur] = col;
+            for(auto nxt : adj[cur]) 
+                if(!dfs(nxt, -col)) 
+                    return false;
+            return true;
+        };
+
+        for(int i = 1; i <= n; i++) {
+            if(color[i] == 0 && !dfs(i, 1)) 
+                return false;
+        }
+        return true;     
+    }
+};
