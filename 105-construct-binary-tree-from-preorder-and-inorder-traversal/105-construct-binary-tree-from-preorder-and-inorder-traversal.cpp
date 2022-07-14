@@ -11,23 +11,27 @@
  */
 class Solution {
   int pre = 0;
-   TreeNode* helper(vector<int>& preorder, vector<int>& inorder,int is,int ie) {
+   TreeNode* helper(vector<int>& preorder, vector<int>& inorder,int is,int ie,unordered_map<int,int> &mp) {
      if(is>ie) return nullptr;
      TreeNode* root = new TreeNode(preorder[pre++]);
-     int index;
-     for(int i=is;i<=ie;i++)
-       if(inorder[i] == root->val){
-         index = i;
-         break;
-       }
+     int index = mp[root->val];
+     // for(int i=is;i<=ie;i++)
+     //   if(inorder[i] == root->val){
+     //     index = i;
+     //     break;
+     //   }
      
-     root->left = helper(preorder,inorder,is,index-1);
-     root->right = helper(preorder,inorder,index+1,ie);
+     root->left = helper(preorder,inorder,is,index-1,mp);
+     root->right = helper(preorder,inorder,index+1,ie,mp);
      return root;
    }
 public:
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
         int n = preorder.size();
-      return helper(preorder,inorder,0,n-1);
+        unordered_map<int,int> mp;
+        for(int i=0;i<n;i++){
+            mp[inorder[i]] = i; 
+        }
+      return helper(preorder,inorder,0,n-1,mp);
     }
 };
