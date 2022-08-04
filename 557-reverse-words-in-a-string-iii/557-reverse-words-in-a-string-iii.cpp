@@ -7,25 +7,35 @@ public:
         }
     }
     string reverseWords(string s) {
-        vector<string> word ;
-      string currword = "";
-      for(int i = 0 ; i < s.length() ; i++){
-        if(s[i] == ' '){
-          if(currword != " " && currword != "") word.push_back(currword);
-          currword = "";
-        }else
-        currword+=s[i];
+      int i = 0 ,j ;
+      for( j = 0 ; j < s.length() ; j++){
+        if(s[j] == ' '){
+          reverse(s.begin()+i , s.begin() + j);
+          i = j+1;
+        }
+        
       }
-      if(currword != " " && currword != "") word.push_back(currword);
-      for(int i = 0 ; i < word.size() ; i++){
-        reverseString(word[i]);
-      }
-      string ans;
-      for(int i = 0 ; i < word.size() ; i++){
-        ans+=word[i];
-        if(i != word.size()-1 )
-        ans+=" ";
-      }
-      return ans;
+      reverse(s.begin()+i,s.begin()+j);
+      return s ;
+      //   vector<string> word ;
+      // string currword = "";
+      // for(int i = 0 ; i < s.length() ; i++){
+      //   if(s[i] == ' '){
+      //     if(currword != " " && currword != "") word.push_back(currword);
+      //     currword = "";
+      //   }else
+      //   currword+=s[i];
+      // }
+      // if(currword != " " && currword != "") word.push_back(currword);
+      // for(int i = 0 ; i < word.size() ; i++){
+      //   reverseString(word[i]);
+      // }
+      // string ans;
+      // for(int i = 0 ; i < word.size() ; i++){
+      //   ans+=word[i];
+      //   if(i != word.size()-1 )
+      //   ans+=" ";
+      // }
+      // return ans;
     }
 };
