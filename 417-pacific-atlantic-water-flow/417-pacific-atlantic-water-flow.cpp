@@ -1,5 +1,7 @@
 class Solution {
 public:
+  // https://leetcode.com/problems/pacific-atlantic-water-flow/discuss/2184918/Simple-C%2B%2B-solution-using-only-DFS-%3A-Pacific-Atlantic-Water-Flow
+  // https://leetcode.com/problems/as-far-from-land-as-possible/discuss/2184191/C%2B%2B-oror-BFS-oror-Easy-oror-Commented
     bool vis[200][200]; //visited array
    
     void reset(void)// Function to reset our visited array
