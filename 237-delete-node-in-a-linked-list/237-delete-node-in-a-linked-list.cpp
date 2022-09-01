@@ -10,14 +10,16 @@ class Solution {
 public:
     void deleteNode(ListNode* node) {
       
-        // node->val = node->next->val;
-        // node->next = node->next->next;
-      ListNode * t = node;
-      while(t->next->next != NULL){
-        t->val = t->next->val;
-        t = t->next;
-      }
-      t->val = t->next->val;
-      t->next = NULL;
+        node->val = node->next->val;
+        node->next = node->next->next;
+      
+      // Naive Approach
+      // ListNode * t = node;
+      // while(t->next->next != NULL){
+      //   t->val = t->next->val;
+      //   t = t->next;
+      // }
+      // t->val = t->next->val;
+      // t->next = NULL;
     }
 };
