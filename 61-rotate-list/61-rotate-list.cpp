@@ -14,13 +14,15 @@ public:
         if(head == NULL || head->next == NULL || k == 0) return head;
       ListNode* temp = head , *end;
       int length = 1;
+      stack<ListNode*> st;
       while(temp->next != NULL){
-        length++; temp = temp->next;
+        length++; st.push(temp); temp = temp->next; 
       }
       k = k%length;
       for(int i = 1 ; i <= k ; i++){
-        temp = head;
-        while(temp->next->next != NULL) temp = temp->next;
+        // temp = head;
+        // while(temp->next->next != NULL) temp = temp->next;
+        temp = st.top(); st.pop();
         end = temp->next;
         temp->next = NULL;
         end->next = head;
