@@ -20,19 +20,19 @@ public:
 
 class Solution {
   private:
-  void bfs(Node* root , int level , vector<vector<int>> &res){
+  void dfs(Node* root , int level , vector<vector<int>> &res){
     if(root == NULL) return ;
     if(res.size() == level) res.push_back({});
     
     res[level].push_back(root->val);
     for(auto children : root->children){
-      bfs(children , level+1 , res);
+      dfs(children , level+1 , res);
     }
   }
 public:
     vector<vector<int>> levelOrder(Node* root) {
       vector<vector<int> > res;
-      bfs(root , 0 , res);
+      dfs(root , 0 , res);
       return res;
       //BFS Approach
 //         vector<vector<int>> ans;
