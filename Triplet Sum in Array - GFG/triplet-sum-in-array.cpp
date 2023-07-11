@@ -18,11 +18,12 @@ class Solution{
             // int small_target = X - A[i] - A[low] - A[high];
             
             while(low < high){
-                int sum = A[i] + A[low] + A[high];
-                if(sum == X){
+                // int sum = A[i] + A[low] + A[high];
+                int small_target = X - A[i] - A[low] - A[high];
+                if(small_target == 0){
                     return true;
                 }
-                else if(sum < X ){
+                else if(small_target > 0 ){
                     low++;
                 }
                 else high--;
